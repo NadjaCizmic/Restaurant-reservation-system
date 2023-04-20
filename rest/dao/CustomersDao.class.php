@@ -7,7 +7,7 @@ class CustomersDao{
     */
         public function __construct(){
             try {
-            $servername = "127.0.0.1";
+            $servername = "localhost";
             $username="root";
             $password="1234";
             $schema="web-project";
@@ -51,6 +51,15 @@ class CustomersDao{
             $stmt = $this->conn->prepare("DELETE FROM customers WHERE id=:id");
             $stmt->bindParam(':id', $id); 
             $stmt->execute();
+        }
+
+        /**
+        * Method used to get customer by id from database
+        */
+        public function get_by_id($id){
+            $stmt = $this->conn->prepare("SELECT * FROM customers WHERE id=:id");
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 }
 

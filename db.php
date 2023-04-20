@@ -4,8 +4,8 @@
     $customer_dao = new CustomersDao();
 
     $results = $customer_dao->get_all();
-    print_r($results)
-    /*$servername = "127.0.0.1";
+    print_r($results);
+    /*$servername = "localhost";
     $username="root";
     $password="1234";
     $schema="web-project";
