@@ -1,0 +1,65 @@
+/* Custom styles */
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .hero-section {
+    padding: 100px 0;
+    background-image: url(your_image_url.jpg);
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .btn-reservation {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border-radius: 30px;
+  }
+  
+  .reservation-section {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  
+  .menu-section {
+    padding: 100px 0;
+  }
+  
+  .menu-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .contact-section {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+  }
+  
+  .contact-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
