@@ -7,9 +7,5 @@ class TableService extends BaseService{
         parent::__construct(new TablesDao);
     } 
 
-    public function add($entity){
-        return parent::add($entity);
-    
-    }
 }
 ?>

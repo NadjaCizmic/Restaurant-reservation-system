@@ -7,9 +7,5 @@ class ReservationService extends BaseService{
         parent::__construct(new ReservationsDao);
     } 
 
-    public function add($entity){
-        return parent::add($entity);
-    
-    }
 }
 ?>

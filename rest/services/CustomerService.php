@@ -7,9 +7,5 @@ class StudentService extends BaseService{
         parent::__construct(new CustomersDao);
     } 
 
-    public function add($entity){
-        return parent::add($entity);
-    
-    }
 }
 ?>
