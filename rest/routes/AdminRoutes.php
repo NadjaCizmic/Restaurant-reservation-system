@@ -16,7 +16,7 @@ Flight::route("GET /admin", function(){
     Flight::json(Flight::admin_service()->get_by_id($id));
  });
  
- Flight::route("DELETE /table/@id", function($id){
+ Flight::route("DELETE /admin/@id", function($id){
     Flight::admin_service()->delete($id);
     Flight::json(['message' => "Admin deleted successfully"]);
  });

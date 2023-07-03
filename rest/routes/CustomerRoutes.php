@@ -23,13 +23,13 @@ Flight::route("GET /customers", function(){
  
  Flight::route("POST /customer", function(){
     $request = Flight::request()->data->getData();
-    Flight::json(['message' => "Student added successfully",
+    Flight::json(['message' => "Customer added successfully",
                   'data' => Flight::customer_service()->add($request)
                  ]);
  });
  
  Flight::route("PUT /customer/@id", function($id){
-    $student = Flight::request()->data->getData();
+    $customer = Flight::request()->data->getData();
     Flight::json(['message' => "Customeer edit successfully",
                   'data' => Flight::customer_service()->update($customer, $id)
                  ]);

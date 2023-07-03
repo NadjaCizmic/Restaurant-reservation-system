@@ -20,6 +20,37 @@
 
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href=".\assets\css\style.css"/>
+		<link
+		  rel="stylesheet"
+		  type="text/css"
+		  href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+		/>
+		<link
+		  rel="stylesheet"
+		  type="text/css"
+		  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"
+		/>
+		<link
+		  rel="stylesheet"
+		  type="text/css"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+		  rel="stylesheet"
+		/>
+		<link
+		  rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css"
+		/>
+		<link
+		  rel="stylesheet"
+		  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		/>
+	
+		<link
+		  href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css"
+		  rel="stylesheet"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 
 
     </head>
@@ -68,7 +99,7 @@
 						<li><a href="index.html#menu">Menu</a></li>
 						<li><a href="index.html#reservation">Reservation</a></li>
 						<!-- <li><a href="index.html#gallery">Gallery</a></li> -->
-						<li><a href="index.html#events">Events</a></li>
+						<li><a href="index.html#ourteam">Our team</a></li>
 						<li><a href="index.html#contact">Contact</a></li>
 					</ul>
 					<!-- /nav -->
@@ -76,13 +107,14 @@
 					<!-- button nav -->
 					<ul class="cta-nav">
 						<li><a href="index.html#reservation" class="main-button">Reserve</a></li>
+						<li><a href="index.html#login" class="main-button">Login</a></li>
 					</ul>
 					<!-- button nav -->
 
 					<!-- contact nav -->
 					<ul class="contact-nav nav navbar-nav">
-						<li><a href="tel:0455481497"><i class="fa fa-phone"></i> 045-548-14-97</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i> 3685 Granville Lane</a></li>
+						<li><a href="tel:0455481497"><i class="fa fa-phone"></i> 033-123-456</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Olimpijska 28</a></li>
 					</ul>
 					<!-- contact nav -->
 
@@ -384,7 +416,7 @@
 
 					<!-- reservation form -->
 					<div class="col-md-6 col-md-offset-1 col-sm-10 col-sm-offset-1">
-						<form class="reserve-form row">
+						<form class="reserve-form row" id="addCustomerModal">
 							<div class="section-header text-center">
 								<h4 class="sub-title">Reservation</h4>
 								<h2 class="title white-text">Book Your Table</h2>
@@ -392,7 +424,11 @@
 
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="name">Name:</label>
+									<label for="first_name">First Name:</label>
+									<input class="input" type="text" placeholder="Name" id="name">
+								</div>
+								<div class="form-group">
+									<label for="last_name">Last Name:</label>
 									<input class="input" type="text" placeholder="Name" id="name">
 								</div>
 								<div class="form-group">
@@ -413,12 +449,12 @@
 								<div class="form-group">
 									<label for="number">Number of Guests:</label>
 									<select class="input" id="number">
-										<option>1 Person</option>
-										<option>2 People</option>
-										<option>3 People</option>
-										<option>4 People</option>
-										<option>5 People</option>
-										<option>6 People</option>
+										<option>1 </option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -428,7 +464,7 @@
 							</div>
 
 							<div class="col-md-12 text-center">
-								<button class="main-button">Book Now</button>
+								<button class="main-button" type="submit">Book Now</button>
 							</div>
 
 						</form>
@@ -484,8 +520,9 @@
 		</div>
 		<!-- /Reservation -->
 
+		
 		<!-- Events -->
-		<div id="events" class="section">
+		<div id="ourteam" class="section">
 
 			<!-- container -->
 			<div class="container">
@@ -495,40 +532,37 @@
 
 					<!-- section header -->
 					<div class="section-header text-center">
-						<h4 class="sub-title">Special Event</h4>
-						<h2 class="title">Upcoming Event</h2>
+						<h2 class="title">Our Team</h2>
 					</div>
 					<!-- /section header -->
 
 					<!-- single event -->
+					
 					<div class="col-md-6">
 						<div class="event">
 							<div class="event-img">
-								<img src=".\assets\img\event01.jpg" alt="">
-								<div class="event-day">
-									<span>08<br>July</span>
-								</div>
+								<img src=".\assets\img\chef.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<p><i class="fa fa-clock-o"></i> 8.00PM - 10.00PM</p>
-								<h3><a href="blog.html">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
+								<h3>te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Edit</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+				  </div>
 					<!-- /single event -->
 
 					<!-- single event -->
 					<div class="col-md-6">
 						<div class="event">
 							<div class="event-img">
-								<img src=".\assets\img\event02.jpg" alt="">
-								<div class="event-day">
-									<span>08<br>July</span>
-								</div>
+								<img src=".\assets\img\chef_assistent.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<p><i class="fa fa-clock-o"></i> 8.00PM - 10.00PM</p>
 								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
@@ -540,13 +574,9 @@
 					<div class="col-md-6">
 						<div class="event">
 							<div class="event-img">
-								<img src=".\assets\img\event02.jpg" alt="">
-								<div class="event-day">
-									<span>08<br>July</span>
-								</div>
+								<img src=".\assets\img\waiter.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<p><i class="fa fa-clock-o"></i> 8.00PM - 10.00PM</p>
 								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
@@ -558,13 +588,9 @@
 					<div class="col-md-6">
 						<div class="event">
 							<div class="event-img">
-								<img src=".\assets\img\event01.jpg" alt="">
-								<div class="event-day">
-									<span>08<br>July</span>
-								</div>
+								<img src=".\assets\img\waitress.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<p><i class="fa fa-clock-o"></i> 8.00PM - 10.00PM</p>
 								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
@@ -577,7 +603,9 @@
 
 			</div>
 			<!-- /container -->
-
+		</div>
+		</div>
+		</div>
 		</div>
 		<!-- /Events -->
 
@@ -639,7 +667,7 @@
 							<a href="index.html#about">About</a>
 							<a href="index.html#menu">Menu</a>
 							<a href="index.html#reservation">Reservation</a>
-							<a href="index.html#events">Events</a>
+							<a href="index.html#events">Our Team</a>
 							<a href="index.html#contact">Contact</a>
 						</nav>
 					</div>
@@ -671,6 +699,13 @@
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 		<script type="text/javascript" src=".\assets\js\google-map.js"></script>
 		<script type="text/javascript" src=".\assets\js\main.js"></script>
+		<script type="text/javascript" src=".\assets\js\customer-service.js"></script>
+		<script type="text/javascript" src="config.js"></script>
+
+		<!-- Add this script tag to the bottom of your HTML file, after the form -->
+
+  
 
 	</body>
 </html>
+
