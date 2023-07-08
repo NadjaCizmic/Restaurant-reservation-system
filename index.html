@@ -100,14 +100,14 @@
 						<li><a href="index.html#reservation">Reservation</a></li>
 						<!-- <li><a href="index.html#gallery">Gallery</a></li> -->
 						<li><a href="index.html#ourteam">Our team</a></li>
-						<li><a href="index.html#contact">Contact</a></li>
+						<li><a href="contact.html">Contact</a></li>
 					</ul>
 					<!-- /nav -->
 
 					<!-- button nav -->
 					<ul class="cta-nav">
 						<li><a href="index.html#reservation" class="main-button">Reserve</a></li>
-						<li><a href="index.html#login" class="main-button">Login</a></li>
+						<li><a href="login.html" class="main-button">Login</a></li>
 					</ul>
 					<!-- button nav -->
 
@@ -131,7 +131,7 @@
 		<div id="home" class="banner-area">
 
 			<!-- Backgound Image -->
-			<div class="bg-image bg-parallax overlay" style="background-image:url(.\assets\img\background02.jpg)"></div>
+			<div class="bg-image bg-parallax overlay" style="background-image:url(./assets/img/background01.jpg)"></div>
 			<!-- /Backgound Image -->
 
 			<div class="home-wrapper">
@@ -550,10 +550,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Edit</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-				  </div>
+				
 					<!-- /single event -->
 
 					<!-- single event -->
@@ -563,7 +560,7 @@
 								<img src=".\assets\img\chef_assistent.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
+								<h3>te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
 						</div>
@@ -577,7 +574,7 @@
 								<img src=".\assets\img\waiter.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
+								<h3>te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
 						</div>
@@ -591,7 +588,7 @@
 								<img src=".\assets\img\waitress.jpg" alt="">
 							</div>
 							<div class="event-content">
-								<h3><a href="#">te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</a></h3>
+								<h3>te vero tritani iuvaret vis. Nec odio periculis adipiscing an.</h3>
 								<p>Te sit stet labitur veritus, sea similique consetetur ut. Ne fastidii oportere usu. Iusto mediocrem iudicabit ea eos, nemore offendit detraxit ei cum.</p>
 							</div>
 						</div>
@@ -668,7 +665,7 @@
 							<a href="index.html#menu">Menu</a>
 							<a href="index.html#reservation">Reservation</a>
 							<a href="index.html#events">Our Team</a>
-							<a href="index.html#contact">Contact</a>
+							<a href="contact.html">Contact</a>
 						</nav>
 					</div>
 					<!-- /footer nav -->
@@ -701,9 +698,49 @@
 		<script type="text/javascript" src=".\assets\js\main.js"></script>
 		<script type="text/javascript" src=".\assets\js\customer-service.js"></script>
 		<script type="text/javascript" src="config.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 		<!-- Add this script tag to the bottom of your HTML file, after the form -->
-
+		<script>
+			$(document).ready(function() {
+			  // Handle form submission
+			  $('#addCustomerModal').submit(function(e) {
+				e.preventDefault(); // Prevent form from submitting normally
+				
+				// Get the form data
+				var formData = {
+				  firstName: $('#name').val(),
+				  lastName: $('#name').val(),
+				  email: $('#email').val(),
+				  guests: $('#number').val(),
+				  phone: $('#phone').val(),
+				  time: $('#time').val(),
+				  date: $('#date').val()
+				};
+				
+				// Send the form data to the backend using Ajax
+				$.ajax({
+				  type: 'POST',
+				  url: 'http://localhost/Restaurant-reservation-system/rest/bookings',
+				  data: formData,
+				  success: function(response) {
+					// Handle the successful response from the backend
+					console.log(response);
+					// Display a success message to the user
+					alert('Booking added successfully!');
+					// Reset the form fields
+					$('#addCustomerModal')[0].reset();
+				  },
+				  error: function(xhr, status, error) {
+					// Handle any errors that occur during the Ajax request
+					console.error(error);
+					// Display an error message to the user
+					alert('Error adding booking. Please try again.');
+				  }
+				});
+			  });
+			});
+		  </script>
   
 
 	</body>

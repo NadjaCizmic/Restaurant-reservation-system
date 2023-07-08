@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="assets/css/contact.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center pb-2">
+                <h1 class="mb-4">Contact Our Support</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 mb-5">
+                    <div class="contact-form">
+                        <form name="sentMessage" id="contactForm">
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name"
+                                    required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email"
+                                    required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject"
+                                    required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control" rows="6" id="message" placeholder="Message"
+                                    required="required"
+                                    data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="main-button" type="submit" id="sendMessageButton">Send
+                                    Message</button>
+                                <button class="btn btn-secondary py-2 px-4" onclick="history.back()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5 mb-5">
+                    <p>Contact Our Support and we will make sure to get back to you as soon as possible.</p>
+                    <div class="d-flex">
+                        <div class="pl-3">
+                            <h5>Our Offical Email (incase if the form fails)</h5>
+                            <p>info@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script src="js/mail.js"></script>
+    <script src="js/logout.js"></script>
+    <script>
+        $(document).ready(function () {
+    // Handle form submission
+    $("#contactForm").submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get form data
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var subject = $("#subject").val();
+        var message = $("#message").val();
+
+        // Create an object to hold the form data
+        var formData = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
+        };
+
+        // Send the form data to the server using Ajax
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/Restaurant-reservation-system/rest/send_message",
+            data: formData,
+            success: function (response) {
+                $("#contactForm")[0].reset();
+                alert("Message send successfuly. Please submit the mail , the answer is stored in the database.")
+                // Send email to the specified recipient
+                var recipientEmail = "test@hotmail.com";
+                var emailUrl = "mailto:" + recipientEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
+                window.location.href = emailUrl;
+            },
+            error: function (xhr, status, error) {
+                // Handle the error response
+                $("#success").html("Failed to send message. Please try again.");
+            }
+        });
+    });
+});
+    </script>
+</body>
+
+</html>

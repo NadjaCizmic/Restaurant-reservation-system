@@ -1,39 +1,113 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require_once './services/TableService.php';
 
-Flight::route("GET /table", function(){
-    Flight::json(Flight::table_service()->get_all());
- });
- 
- Flight::route("GET /table_by_id", function(){
-    Flight::json(Flight::table_service()->get_by_id(Flight::request()->query['id']));
- });
- 
- Flight::route("GET /table/@id", function($id){
-    Flight::json(Flight::table_service()->get_by_id($id));
- });
- 
- Flight::route("DELETE /table/@id", function($id){
-    Flight::table_service()->delete($id);
-    Flight::json(['message' => "Table deleted successfully"]);
- });
- 
- Flight::route("POST /table", function(){
-    $request = Flight::request()->data->getData();
-    Flight::json(['message' => "Table added successfully",
-                  'data' => Flight::table_service()->add($request)
-                 ]);
- });
- 
- Flight::route("PUT /table/@id", function($id){
-    $table = Flight::request()->data->getData();
-    Flight::json(['message' => "Table edit successfully",
-                  'data' => Flight::table_service()->update($table, $id)
-                 ]);
- });
- 
- 
+/**
+ * @OA\Post(
+ *     path="/bookings",
+ *     tags={"Booking"},
+ *     summary="Add a new booking",
+ *     @OA\RequestBody(
+ *         @OA\MediaType(
+ *             mediaType="application/json",
+ *             @OA\Schema(
+ *                 @OA\Property(
+ *                     property="firstName",
+ *                     type="string",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="lastName",
+ *                     type="string",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="email",
+ *                     type="string",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="guests",
+ *                     type="integer",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="phone",
+ *                     type="string",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="time",
+ *                     type="string",
+ *                 ),
+ *                 @OA\Property(
+ *                     property="date",
+ *                     type="string",
+ *                     format="date",
+ *                 ),
+ *             ),
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Success",
+ *     ),
+ * )
+ */
+Flight::route('POST /bookings', function(){
+    $firstName = Flight::request()->data['firstName'];
+    $lastName = Flight::request()->data['lastName'];
+    $email = Flight::request()->data['email'];
+    $guests = Flight::request()->data['guests'];
+    $phone = Flight::request()->data['phone'];
+    $time = Flight::request()->data['time'];
+    $date = Flight::request()->data['date'];
+
+    $bookingService = new TableService(Flight::get('pdo'));
+    $booking = $bookingService->addBooking($firstName, $lastName, $email, $guests, $phone, $time, $date);
+
+    Flight::json($booking);
+});
+
+/**
+ * @OA\Get(
+ *     path="/bookings",
+ *     tags={"Booking"},
+ *     summary="Get all bookings",
+ *     @OA\Response(
+ *         response=200,
+ *         description="Success",
+ *     ),
+ * )
+ */
+Flight::route('GET /bookings', function(){
+    $bookingService = new TableService(Flight::get('pdo'));
+    $bookings = $bookingService->getAllBookings();
+
+    Flight::json($bookings);
+});
+
+/**
+ * @OA\Get(
+ *     path="/bookings/{id}",
+ *     tags={"Booking"},
+ *     summary="Get a booking by ID",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID of the booking",
+ *         required=true,
+ *         @OA\Schema(
+ *             type="integer",
+ *             format="int64",
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Success",
+ *     ),
+ * )
+ */
+Flight::route('GET /bookings/@id', function($id){
+    $bookingService = new TableService(Flight::get('pdo'));
+    $booking = $bookingService->getBookingById($id);
+
+    Flight::json($booking);
+});
+
 ?>
