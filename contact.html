@@ -120,7 +120,7 @@
         // Send the form data to the server using Ajax
         $.ajax({
             type: "POST",
-            url: "http://localhost/Restaurant-reservation-system/rest/send_message",
+            url: "https://reserve-1d1bd2960bd7.herokuapp.com/send_message",
             data: formData,
             success: function (response) {
                 $("#contactForm")[0].reset();
