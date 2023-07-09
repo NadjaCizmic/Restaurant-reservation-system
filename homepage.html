@@ -223,7 +223,7 @@
         if (menuId) {
           // Perform AJAX PUT request to update menu
           $.ajax({
-            url: 'http://localhost/Restaurant-reservation-system/rest/menus/' + menuId,
+            url: 'https://reserve-1d1bd2960bd7.herokuapp.com/menus/' + menuId,
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(menu),
@@ -247,7 +247,7 @@
         } else {
           // Perform AJAX POST request to add menu
           $.ajax({
-            url: 'http://localhost/Restaurant-reservation-system/rest/menus',
+            url: 'https://reserve-1d1bd2960bd7.herokuapp.com/menus',
             type: 'POST',
             dataType: 'json',
             data: menu,
@@ -271,7 +271,7 @@
       $('#logout-button').click(function () {
         // Perform AJAX POST request to logout
         $.ajax({
-          url: 'http://localhost/Restaurant-reservation-system/rest/logout',
+          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/logout',
           type: 'POST',
           success: function (response) {
             // Redirect to login page
@@ -288,7 +288,7 @@
       // Function to load menus
       function loadMenus() {
         $.ajax({
-          url: 'http://localhost/Restaurant-reservation-system/rest/menus',
+          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/menus',
           type: 'GET',
           dataType: 'json',
           success: function (response) {
@@ -322,7 +322,7 @@
       // Function to load reservations
       function loadReservations() {
         $.ajax({
-          url: 'http://localhost/Restaurant-reservation-system/rest/bookings',
+          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/bookings',
           type: 'GET',
           dataType: 'json',
           success: function (response) {
@@ -353,7 +353,7 @@
       // Function to load favourite places for dropdown
       function loadFavouritePlaces() {
         $.ajax({
-          url: 'http://localhost/Restaurant-reservation-system/rest/favourite-places',
+          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/favourite-places',
           type: 'GET',
           dataType: 'json',
           success: function (response) {
@@ -381,7 +381,7 @@
 
           // Perform AJAX GET request to fetch menu data
           $.ajax({
-            url: 'http://localhost/Restaurant-reservation-system/rest/menus/' + menuId,
+            url: 'https://reserve-1d1bd2960bd7.herokuapp.com/menus/' + menuId,
             type: 'GET',
             dataType: 'json',
             success: function (response) {
@@ -413,7 +413,7 @@
 
           // Perform AJAX DELETE request to delete menu
           $.ajax({
-            url: 'http://localhost/Restaurant-reservation-system/rest/menus/' + menuId,
+            url: 'https://reserve-1d1bd2960bd7.herokuapp.com/menus/' + menuId,
             type: 'DELETE',
             dataType: 'json',
             success: function (response) {
