@@ -267,23 +267,6 @@
         }
       });
 
-      // Handle logout button click
-      $('#logout-button').click(function () {
-        // Perform AJAX POST request to logout
-        $.ajax({
-          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/logout',
-          type: 'POST',
-          success: function (response) {
-            // Redirect to login page
-            window.location.href = 'login.html';
-            localStorage.removeItem("token")
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-            console.error(jqXHR.responseText);
-          }
-        });
-      });
-
       // Function to load menus
       // Function to load menus
       function loadMenus() {
@@ -318,6 +301,25 @@
           }
         });
       }
+
+      // Handle logout button click
+      $('#logout-button').click(function () {
+        // Perform AJAX POST request to logout
+        $.ajax({
+          url: 'https://reserve-1d1bd2960bd7.herokuapp.com/logout',
+          type: 'POST',
+          success: function (response) {
+            // Redirect to login page
+            window.location.href = 'login.html';
+            localStorage.removeItem("token")
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.error(jqXHR.responseText);
+          }
+        });
+      });
+
+      
 
       // Function to load reservations
       function loadReservations() {
